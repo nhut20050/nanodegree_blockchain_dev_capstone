@@ -8,42 +8,6 @@ contract('NhutNguyenGroupToken', acc => {
     owner = accounts[0];
 });
 
-describe('have ownership properties', function () {
-
-    let instance;
-
-    before(async function () {
-        instance = await NhutNguyenGroupToken.new({from: owner});
-    });
-
-    it('should return contract owner', async function () {
-        const returnedOwner = await instance.getOwner();
-
-        assert.equal(returnedOwner, owner, "Contract owner is incorrect");
-    });
-
-    it('should be able to transfer ownership to new owner', async function () {
-        const newOwner = accounts[1];
-        await instance.transferOwnership(newOwner, {from: owner});
-
-        assert.equal(await instance.getOwner(), newOwner, "Ownership was not transferred to new owner");
-    });
-
-
-    it('should fail when minting when address is not contract owner', async function () {
-        let failed = false;
-
-        try {
-            await instance.mint(accounts[2], 1, {from: accounts[2]});
-            console.log("it worked :(")
-        } catch (err) {
-            failed = true;
-        }
-
-        assert.equal(failed, true, "Non-owner should not be able to mint");
-    });
-
-});
 
 describe('have pausable functionality', function () {
 
@@ -84,7 +48,7 @@ describe('match erc721 spec', function () {
 
     it('should get name, symbol, and baseTokenURI of token', async function () {
         const name = "NhutNguyenGroupToken";
-        const symbol = "IRET";
+        const symbol = "NNG";
         const baseTokenURI = "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/";
 
         assert.equal(await instance.getName(), name, "Token has incorrect name");
@@ -143,4 +107,42 @@ describe('match erc721 spec', function () {
 
         assert.equal(result, to, "Owner of token is incorrect after transfer");
     });
+});
+
+
+describe('have ownership properties', function () {
+
+    let instance;
+
+    before(async function () {
+        instance = await NhutNguyenGroupToken.new({from: owner});
+    });
+
+    it('should return contract owner', async function () {
+        const returnedOwner = await instance.getOwner();
+
+        assert.equal(returnedOwner, owner, "Contract owner is incorrect");
+    });
+
+    it('should be able to transfer ownership to new owner', async function () {
+        const newOwner = accounts[1];
+        await instance.transferOwnership(newOwner, {from: owner});
+
+        assert.equal(await instance.getOwner(), newOwner, "Ownership was not transferred to new owner");
+    });
+
+
+    it('should fail when minting when address is not contract owner', async function () {
+        let failed = false;
+
+        try {
+            await instance.mint(accounts[2], 1, {from: accounts[2]});
+            console.log("it worked :(")
+        } catch (err) {
+            failed = true;
+        }
+
+        assert.equal(failed, true, "Non-owner should not be able to mint");
+    });
+
 });

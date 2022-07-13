@@ -12,12 +12,12 @@ contract Ownable {
     //  TODO's
     //  1) create a private '_owner' variable of type address with a public getter function
     address private _owner;
-    event newOwner(address newOwner);
+    event NewOwner(address newOwner);
 
     //  2) create an internal constructor that sets the _owner var to the creater of the contract
     constructor() public {
         _owner = msg.sender;
-        emit newOwner(_owner);
+        emit NewOwner(_owner);
     }
 
     function getOwner() public view returns (address) {
@@ -40,6 +40,9 @@ contract Ownable {
             "Cannot transfer ownership to a contract account"
         );
         require(newOwner != address(0), "Address is invalid");
+
+        _owner = newOwner;
+        emit NewOwner(_owner);
     }
 }
 
