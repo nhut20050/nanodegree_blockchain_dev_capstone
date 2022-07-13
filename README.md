@@ -211,7 +211,6 @@ Summary
 2. Run `truffle compile && truffle migrate --reset`
 3. run `truffle test`
 
-Result:
 <img src="/images/test-result-01.png" alt="test 1" width="600"/>
 </br>
 <img src="/images/test-result-02.png" alt="test 1" width="600"/>
