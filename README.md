@@ -13,7 +13,7 @@ The capstone will build upon the knowledge you have gained in the course in orde
 
 Name: NhutNguyenGroupToken<br>
 Symbol: NNG<br>
-Token Address: [0x9C64C702DD24547dc70A73C2B18aF57A71B7d7C4](https://rinkeby.etherscan.io/token/0x9C64C702DD24547dc70A73C2B18aF57A71B7d7C4)
+Token Address: [0xaaa47404063e436599b6c2468986b71324bab4b1](https://rinkeby.etherscan.io/token/0xaaa47404063e436599b6c2468986b71324bab4b1)
 
 
 ## OpenSea
